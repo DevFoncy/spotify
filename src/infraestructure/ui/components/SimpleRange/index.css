@@ -1,0 +1,50 @@
+.simple-range-container{
+  display: grid;
+  grid-template-columns: .2fr 1fr .2fr;
+  width: 500px ;
+  height: 300px;
+  margin: auto;
+}
+
+.simple-range-container .simple-range {
+  position: relative;
+  height: 15px;
+  background-color: #ddd;
+  border-radius: 6px;
+  margin: 20px;
+}
+
+.simple-range-container  .range-bar {
+  position: absolute;
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 6px;
+}
+
+.simple-range-container  .handle {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #007bff;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  bottom: -18px;
+  
+}
+
+.simple-range-container  .handle:hover{
+  cursor: grab;
+  width: 30px;
+  height: 30px;
+}
+
+.simple-range-container  .start-handle {
+  left: 0;
+}
+
+.simple-range-container  .end-handle {
+  right: 0;
+}
