@@ -1,11 +1,19 @@
-.exercise-1{
-    margin:20px;
-    width: 100%;
-    text-align: center;
+.podcast-container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:20px;
 }
 
-.exercise-2{
-    margin:20px;
-    width: 100%;
-    text-align: center;
+.podcast-item{
+
+}
+
+.podcast-episode-container{
+    /* display: grid;
+    grid-template-columns: 3fr 1fr 1fr; */
+}
+
+.podcast-container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
 }

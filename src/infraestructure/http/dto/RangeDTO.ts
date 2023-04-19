@@ -7,6 +7,11 @@ export type SimpleRangeModel = {
  }
 
 
+ export interface PodCastDTO{
+    contents: object
+ }
+
+
 export interface SimpleRangeDTO {
     data: SimpleRangeModel,
     status: number

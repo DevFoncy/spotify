@@ -1,27 +1,26 @@
-import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-  } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Exercise1 } from './infraestructure/ui/Exercise1';
-import { Exercise2 } from './infraestructure/ui/Exercise2';
+import { Podcast } from "./infraestructure/ui/Podcast";
+import { PodcastDetail } from "./infraestructure/ui/PodcastDetail";
+import { PodcastEpisode } from "./infraestructure/ui/PodcastEpisode";
 
 function App() {
   return (
     <Router>
-        <Switch>
-            <Route path="/exercise1">
-                <Exercise1 />
-            </Route>
-            <Route path="/">
-                <Exercise1 />
-            </Route>
-          
-        </Switch>
+      <Switch>
+        <Route exact path="/">
+          <Podcast />
+        </Route>
+        <Route exact path="/podcast/:id">
+          <PodcastDetail />
+        </Route>
+        <Route exact path="/podcast/:id/episode/:id">
+          <PodcastEpisode />
+        </Route>
+      </Switch>
     </Router>
-  )
+  );
 }
 
 export default App;
