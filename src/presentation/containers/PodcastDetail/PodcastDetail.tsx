@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { podcastService } from "../../domain/services/Podcast.service";
+import { podcastService } from "../../../domain/services/Podcast.service";
 
 import {
   PodcastObject,
   PodCastEpisodesModel,
-} from "../../domain/models/Podcast";
+} from "../../../domain/models/Podcast";
 
-import "./styles.css";
 import { useHistory, useLocation, useParams } from "react-router-dom";
+
+import Card from "../../components/Card";
+import { msToTime } from "../../../infraestructure/utils/helpers";
+
+import "./index.css";
 
 interface ParamsProps {
   id: string;
@@ -18,6 +22,7 @@ interface LocationType {
     img: string;
     title: string;
     author: string;
+    description: string;
   };
   pathname: string;
 }
@@ -57,19 +62,20 @@ export const PodcastDetail = (props: any) => {
   }, []);
 
   return (
-    <div className="podcast-episode">
-      <h1>Podcast Detail</h1>
-      <div className="podcast-container">
+    <div className="podcast-detail">
+      <div className="podcast-detail-container">
         <div className="podcast-detail">
-          <div>
-            <img src={location?.state?.img} alt="" />
-          </div>
-          <h1> {location?.state?.title}</h1>
-          <h2>Author: {location?.state?.author}</h2>
+          <Card
+            image={location?.state?.img}
+            title={location?.state?.title}
+            author={location?.state?.author}
+            description={location?.state?.description}
+            onClick={() => history.goBack()}
+          />
         </div>
         <div className="podcast-episode-container">
-          <p>Episodes: {episodes?.resultCount}</p>
-          <table>
+          <p className="count">Episodes: {episodes?.resultCount}</p>
+          <table width={"100%"}>
             <thead>
               <tr>
                 <td width="60%">Title</td>
@@ -78,23 +84,26 @@ export const PodcastDetail = (props: any) => {
               </tr>
             </thead>
             <tbody>
-              {episodes?.results.map((episode) => (
+              {episodes?.results.length === 0 && (
+                <div>
+                  <p> Loading ....</p>
+                </div>
+              )}
+              {episodes?.results.map((episode, index) => (
                 <tr
+                  key={"item" + index}
                   className="podcast-episode-item"
                   onClick={() => _onClick(episode)}
                 >
                   <td width="60%">
                     {" "}
-                    <h2>{episode?.trackName}</h2>
+                    <h5>{episode?.trackName}</h5>
                   </td>
                   <td width="20%">
                     {" "}
-                    <p>{episode?.releaseDate}</p>
+                    {new Date(episode?.releaseDate).toLocaleString()}
                   </td>
-                  <td width="20%">
-                    {" "}
-                    <p>{episode?.trackTimeMillis}</p>
-                  </td>
+                  <td width="20%"> {msToTime(episode?.trackTimeMillis)}</td>
                 </tr>
               ))}
             </tbody>

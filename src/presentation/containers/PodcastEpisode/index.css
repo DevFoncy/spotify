@@ -1,0 +1,13 @@
+audio {
+  width: 100%;
+}
+
+.podcast-episode {
+  margin-top: 50px;
+}
+
+.podcast-episode-container {
+  background-color: white;
+  box-shadow: -2px 1px 11px 12px rgb(0 0 0 / 5%);
+  padding: 10px 20px;
+}

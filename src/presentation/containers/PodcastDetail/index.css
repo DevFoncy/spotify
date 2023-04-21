@@ -1,0 +1,39 @@
+.podcast-detail-container {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  grid-gap: 20px;
+}
+
+.podcast-detail {
+  margin-top: 50px;
+}
+
+.podcast-detail table,
+.podcast-detail p.count {
+  background-color: white;
+  box-shadow: -2px 1px 11px 12px rgb(0 0 0 / 5%);
+  padding: 10px 20px;
+}
+
+.podcast-detail p {
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.podcast-detail table tr:nth-child(even) {
+  background-color: #e7e9eb;
+}
+
+.podcast-detail table thead td {
+  font-weight: bold;
+}
+
+table h5 {
+  color: #1b64bc;
+  margin: 10px;
+}
+
+.podcast-episode-item:hover {
+  cursor: pointer;
+}
